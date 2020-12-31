@@ -11,7 +11,10 @@
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
     "start": "npm -s run build && babel-node server/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test:update": "jest -u",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "keywords": [],
   "author": "stern9",
@@ -23,6 +26,7 @@
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-react": "^7.0.0",
     "@emotion/babel-preset-css-prop": "^10.0.7",
+    "@types/jest": "^24.0.9",
     "babel-eslint": "^10.0.1",
     "cross-env": "^5.2.0",
     "eslint": "^5.12.1",
@@ -31,8 +35,10 @@
     "eslint-plugin-jsx-a11y": "^6.2.0",
     "eslint-plugin-react": "^7.12.4",
     "eslint-plugin-react-hooks": "^1.0.2",
+    "jest": "^24.1.0",
     "parcel-bundler": "^1.12.1",
-    "prettier": "^1.16.1"
+    "prettier": "^1.16.1",
+    "@testing-library/react": "^8.0.1"
   },
   "dependencies": {
     "@emotion/core": "^10.0.10",

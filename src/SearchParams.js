@@ -12,14 +12,16 @@ const SearchParams = () => {
   const [pets, setPets] = useState([]);
   const [theme, setTheme] = useContext(ThemeContext);
 
-  async function requestPets() {
-    const { animals } = await pet.animals({
-      location,
-      breed,
-      type: animal,
-    });
-
-    setPets(animals || []);
+  function requestPets() {
+    pet
+      .animals({
+        location,
+        breed,
+        type: animal
+      })
+      .then(({ animals }) => {
+        setPets(animals || []);
+      });
   }
 
   useEffect(() => {
@@ -35,7 +37,7 @@ const SearchParams = () => {
   return (
     <div className="search-params">
       <form
-        onSubmit={(e) => {
+        onSubmit={e => {
           e.preventDefault();
           requestPets();
         }}
@@ -46,7 +48,7 @@ const SearchParams = () => {
             id="location"
             value={location}
             placeholder="Location"
-            onChange={(e) => setLocation(e.target.value)}
+            onChange={e => setLocation(e.target.value)}
           />
         </label>
         <AnimalDropdown />
@@ -55,8 +57,8 @@ const SearchParams = () => {
           Theme
           <select
             value={theme}
-            onChange={(e) => setTheme(e.target.value)}
-            onBlur={(e) => setTheme(e.target.value)}
+            onChange={e => setTheme(e.target.value)}
+            onBlur={e => setTheme(e.target.value)}
           >
             <option value="peru">Peru</option>
             <option value="darkBlue">Dark Blue</option>
